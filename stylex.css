@@ -1,0 +1,101 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+body { overflow-x: hidden; }
+.toggle-logic { display: none; }
+
+/* -------------------------------------
+   HOME PAGE (index.html)
+-------------------------------------- */
+.home-page-body { background-color: #112D4E; color: #F9F7F7; }
+
+.home-content {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    min-height: 100vh; padding: 20px; position: relative;
+    background: url('OIP.webp');
+    background-size: cover; background-position: center;
+}
+
+.logo-wrapper {
+    width: 150px; height: 150px; background: white; border-radius: 50%;
+    border: 4px solid #3F72AF; display: flex; justify-content: center; align-items: center;
+    overflow: hidden; margin-bottom: 20px;
+}
+.college-logo { width: 90%; height: 90%; object-fit: contain; }
+
+.hero-text h1 { color: #fdfdfd; font-size: 2rem; margin-bottom: 10px; }
+.hero-text p { color: #ffffff; font-size: 1.1rem; margin-bottom: 30px; }
+
+.btn-grid { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+
+.portal-btn { 
+    background: #3F72AF; color: white; padding: 15px 30px; border-radius: 10px; 
+    text-decoration: none; font-weight: bold; min-width: 190px; transition: 0.3s;
+    display: inline-block; text-align: center; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.portal-btn:hover { background-color: #123377; transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+.home-footer { position: absolute; bottom: 30px; width: 100%; text-align: center; }
+.footer-text { color: white; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.3); display: inline-block; padding-top: 10px; }
+
+/* -------------------------------------
+   ID CARD POPUP OVERLAY
+-------------------------------------- */
+#id-check:checked ~ .id-page { display: flex; }
+.page-overlay { 
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0, 0, 0, 0.7); z-index: 1000; align-items: center; justify-content: center; 
+    padding: 20px; backdrop-filter: blur(5px);
+}
+.id-form-panel { 
+    background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+    overflow-y: auto; max-height: 90vh; color: #333;
+}
+.id-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.id-form-grid input[type="text"], .id-form-grid input[type="number"] {
+    width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;
+}
+.id-form-grid input:focus { outline: none; border-color: #1b49aa; }
+
+.import-btn { 
+    background-color: #e9ecef; color: #333; padding: 12px; border: 1px dashed #666; 
+    border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s; display: inline-block;
+}
+.import-btn:hover { background-color: #dde0e3; }
+
+.submit-btn-green { 
+    background-color: #28a745; color: white; border: none; padding: 15px; font-size: 16px; 
+    border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold;
+}
+.submit-btn-green:hover { background-color: #218838; }
+
+.return-btn { 
+    display: block; background-color: transparent; color: #dc3545; padding: 10px; 
+    text-align: center; cursor: pointer; font-weight: bold; width: 100%; text-decoration: none;
+}
+.return-btn:hover { text-decoration: underline; }
+
+/* -------------------------------------
+   LOGIN / SIGNUP PAGE & DASHBOARDS
+-------------------------------------- */
+.login-page { min-height: 100vh; display: flex; justify-content: center; align-items: center; background: #f4f7fb; padding: 20px; }
+.login-box { background: white; width: 100%; max-width: 420px; padding: 35px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
+.login-box h2 { color: #112D4E; margin-bottom: 25px; }
+.login-box input, .login-box button { width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd; font-size: 15px; }
+.full-btn { background: #3F72AF; color: white; border: none; cursor: pointer; font-weight: bold; transition: 0.3s; }
+.full-btn:hover { background: #0d1f36; }
+.extra-links { display: flex; justify-content: space-between; margin-top: 5px; margin-bottom: 20px; }
+.extra-links a { text-decoration: none; color: #3F72AF; font-size: 14px; }
+.cancel-btn { text-decoration: none; color: #e74c3c; font-weight: bold; display: inline-block; margin-top: 10px; }
+
+/* Dashboard Specific Layout additions */
+#liveBox{ margin-top:15px; padding:12px; background:#eef4ff; border-radius:8px; display:none; font-weight:600; line-height:1.6; text-align: left;}
+#secondRoomBox{ display:none; margin-top:15px; padding:15px; background:#fff4e8; border-radius:10px; }
+
+@media print{
+    body{ background:white; padding:0; }
+    .top-bar{ box-shadow:none; margin-bottom:10px; }
+    
+    /* Pehle yahan .action-row {display:none} tha, uski jagah ye nayi class lagayein */
+    .hide-on-print{ display:none !important; }
+    
+    .room-card{ box-shadow:none; margin:0; border:1px solid #ddd; page-break-after:always; }
+}

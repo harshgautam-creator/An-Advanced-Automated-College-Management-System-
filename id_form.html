@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ID Card Form</title>
+<link rel="stylesheet" href="/static/stylex.css">
+
+<style>
+    /* Styling for custom file upload boxes */
+    .upload-container {
+        display: flex;
+        gap: 15px;
+        grid-column: span 2;
+        margin-top: 10px;
+    }
+    
+    .file-upload-box {
+        flex: 1;
+        display: block;
+        padding: 25px 15px;
+        border: 2px dashed #3F72AF;
+        border-radius: 10px;
+        text-align: center;
+        background: #f4f7fb;
+        color: #112D4E;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+    
+    .file-upload-box:hover {
+        background: #eaf2ff;
+        border-color: #112D4E;
+    }
+    
+    /* Hide the default boring input button */
+    .file-upload-box input[type="file"] {
+        display: none;
+    }
+
+    /* Input grid responsiveness */
+    .id-form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    input[type="text"], input[type="number"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 600px) {
+        .id-form-grid {
+            grid-template-columns: 1fr;
+        }
+        .upload-container {
+            grid-column: span 1;
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+
+<body class="home-page-body">
+
+<div class="id-page-wrapper" style="justify-content:center; display:flex; width:100%; padding:30px; box-sizing: border-box;">
+
+    <div class="id-form-panel" style="width:100%; max-width:750px; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.08);">
+
+        <form action="/generate-id-card" method="POST" enctype="multipart/form-data">
+
+            <h2 style="text-align:center; margin-bottom:25px; color: #112D4E;">
+                Fill Details for ID Card
+            </h2>
+
+            <div class="id-form-grid">
+
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="text" name="father" placeholder="Father's Name" required>
+
+                <input type="text" name="mother" placeholder="Mother's Name" required>
+                <input type="text" name="enrollment" placeholder="Enrollment Number" required>
+
+                <input type="text" name="branch" placeholder="Branch (e.g., Computer Science)" required>
+                <input type="tel"name="contact"pattern="[0-9]{10}"maxlength="10"required placeholder="Mobile number"oninvalid="this.setCustomValidity('Please enter exactly 10 digits mobile number')"oninput="this.setCustomValidity('')">
+
+                <input type="text" name="email" placeholder="Email Address" required>
+                <input type="text" name="adhar" pattern="[0-9]{12}" maxlength="12" required placeholder="Aadhar number">
+
+                <input type="text" name="address" placeholder="Full Address" required>
+                <input type="date" name="dob" placeholder="Date of Birth (DD/MM/YYYY)" required>
+                
+
+                
+                <input type="tel"  name="contact" pattern="[0-9]{10}" maxlength="10" required placeholder="Alternative Mobile Number">
+                <input type="text" name="samagra" pattern="[0-9]{9}" maxlength="9" required placeholder="Samagra ID">
+
+                <input type="number" name="study_year" placeholder="Study Year (1, 2, or 3)" style="grid-column: span 2;" required>
+
+                <!-- CUSTOM FILE UPLOAD SECTION -->
+                <div class="upload-container">
+                    <label class="file-upload-box" id="photo-label">
+                        📷 Upload Student Photo
+                        <input type="file" name="photo" accept="image/*" onchange="updateLabel(this, 'photo-label')" required>
+                    </label>
+                    
+                    <label class="file-upload-box" id="sign-label">
+                        ✍️ Upload Student Signature
+                        <input type="file" name="student_sign" accept="image/*" onchange="updateLabel(this, 'sign-label')" required>
+                    </label>
+                </div>
+
+            </div>
+
+            <br>
+
+            <button type="submit" class="submit-btn-green" style="width: 100%; padding: 15px; font-size: 16px; font-weight: bold; background: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 10px;">
+                SUBMIT DATA
+            </button>
+
+            <a href="/student-logout" class="return-btn" style="display: block; text-align: center; text-decoration: none; color: #e74c3c; font-weight: 600;">
+                ← Logout
+            </a>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- JAVASCRIPT FOR FILE UPLOAD ANIMATION -->
+<script>
+    function updateLabel(input, labelId) {
+        let label = document.getElementById(labelId);
+        if (input.files && input.files.length > 0) {
+            let fileName = input.files[0].name;
+            
+            // Text aur design change karo jisse lage ki upload ho gaya hai
+            label.innerHTML = `✅ ${fileName} <br><span style="font-size:12px; color:#555;">(Ready to submit)</span>`;
+            label.style.borderColor = "#27ae60";
+            label.style.background = "#e9f7ef";
+            label.style.color = "#27ae60";
+            
+            // Dobara default input tag andar daalna padega hidden form me, warna overwrite ho jayega
+            let newInput = document.createElement("input");
+            newInput.type = "file";
+            newInput.name = input.name;
+            newInput.style.display = "none";
+            // File object transfer
+            let dataTransfer = new DataTransfer();
+            dataTransfer.items.add(input.files[0]);
+            newInput.files = dataTransfer.files;
+            
+            label.appendChild(newInput);
+        }
+    }
+</script>
+
+</body>
+</html>

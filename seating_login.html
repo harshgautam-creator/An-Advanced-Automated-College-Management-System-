@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Login</title>
+    <link rel="stylesheet" href="/static/stylex.css">
+</head>
+<body>
+
+<div class="login-page">
+    <div class="login-box">
+        <h2>Seating Arrangement Login</h2>
+        <form action="/seating-login" method="POST">
+            <input type="text" name="staff_id" placeholder="Enter Staff ID" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <button type="submit" class="portal-btn full-btn">Login</button>
+        </form>
+
+        <div class="extra-links">
+            <a href="/staff-forgot-password">Forgot Password?</a>
+            <a href="/signup">Sign Up</a>
+        </div>
+
+        <a href="/" class="cancel-btn">← Back to Home</a>
+    </div>
+</div>
+
+</body>
+</html>

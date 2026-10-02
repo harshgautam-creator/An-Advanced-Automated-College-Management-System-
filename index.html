@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Portal | SRGPC Sagar</title>
+    <link rel="stylesheet" href="/static/stylex.css">
+</head>
+<body class="home-page-body"> 
+    <input type="checkbox" id="id-check" class="toggle-logic">
+
+    <div class="home-content">
+        <div class="logo-area">
+            <div class="logo-wrapper">
+                <img src="/static/logo.webp" alt="Logo" class="college-logo">
+            </div>
+        </div>
+        <div class="hero-text">
+            <h1>Sahodra Rai Government Polytechnic College</h1>
+            <p>Sagar, Madhya Pradesh</p>
+        </div>
+        
+        <div class="btn-grid" id="home-btn-grid">
+          <!--<label for="id-check" class="portal-btn">ID Card Form</label> -->
+            <a href="/student-login" class="portal-btn">ID Card Form</a>
+            <a href="/seating-login" class="portal-btn">Seating Arrangement</a>
+        </div>
+        
+        <footer class="home-footer">
+            <p class="footer-text">S. R. Govt. Polytechnic College, Tilli Road, Sagar (M.P.)-470001</p>
+        </footer>
+    </div>
+
+    <div class="page-overlay id-page">
+        <div class="id-page-wrapper" style="justify-content: center; display: flex; width: 100%;">
+            <div class="id-form-panel" style="width: 100%; max-width: 700px;">
+                <form action="/generate-id-card" method="POST" enctype="multipart/form-data">        
+                    <h2 style="text-align: center; margin-bottom: 20px;">Fill Details for ID Card</h2>
+                    <div class="id-form-grid">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="text" name="father" placeholder="Father's Name" required>
+                        <input type="text" name="mother" placeholder="Mother's Name" required> 
+                        <input type="text" name="enrollment" placeholder="Enrollment Number" required>
+                        <input type="text" name="branch" placeholder="Branch" required>
+                        <input type="text" name="contact" placeholder="Contact Number" required>
+                        <input type="text" name="email" placeholder="Email Address" required>
+                        <input type="text" name="adhar" placeholder="Aadhar Number" required>
+                        <input type="text" name="address" placeholder="Address" required>
+                        <input type="text" name="dob" placeholder="DOB (DD/MM/YYYY)" required>
+                        <input type="text" name="alt_contact" placeholder="Alt Contact" required>
+                        <input type="text" name="samagra" placeholder="Samagra Id" required>
+                        <input type="number" name="study_year" placeholder="Current Year of Study (e.g., 1, 2, 3)" required>
+                        
+                        <div class="upload-section" style="grid-column: span 2; display:flex; gap:12px;">
+<div class="upload-section" style="grid-column: span 2; display:flex; gap:12px;">
+
+    <input type="file" name="photo" id="photo-upload"
+           accept="image/*" hidden required>
+
+    <label for="photo-upload" class="import-btn"
+           style="flex:1; text-align:center; cursor:pointer;">
+        📷 Upload Student Photo
+    </label>
+
+    <input type="file" name="student_sign" id="sign-upload"
+           accept="image/*" hidden required>
+
+    <label for="sign-upload" class="import-btn"
+           style="flex:1; text-align:center; cursor:pointer;">
+        ✍ Upload Signature
+    </label>
+
+</div>
+                    <div class="id-action-group" style="margin-top: 20px;">
+                       <button type="submit" class="submit-btn-green">SUBMIT & DOWNLOAD PDF</button>
+                       <label for="id-check" class="return-btn id-return-btn">← CANCEL</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<style>
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:30px;
+}
+.card{
+background:white;
+padding:20px;
+margin:15px 0;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+a{
+text-decoration:none;
+color:red;
+}
+</style>
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<div class="card">
+<h3>Total Staff: {{ total_staff }}</h3>
+</div>
+
+<div class="card">
+<h3>Total Students: {{ total_students }}</h3>
+</div>
+
+<a href="/admin_logout">Logout</a>
+<!-- NAYA BUTTON: Batch me sabhi approved ID cards print karne ke liye 08-17-2026 -->
+<a href="/print-id-cards" target="_blank" style="display:inline-block; padding:10px 20px; background:#28a745; color:white; text-decoration:none; border-radius:6px; font-weight:bold;">
+    🖨️ Print All Approved ID Cards
+</a>
+<!-- NAYA H2 TAG: Pending Requests ki ginti yaha show hogi -->
+
+<h2>Pending Requests: {{ pending_requests }}</h2>
+
+<table border="1" cellpadding="10" width="100%">
+<tr>
+    <th>ID</th>
+    <th>Staff ID</th>
+    <th>Type</th>
+    <th>Details</th>
+    <th>Status</th>
+    <th>PDF</th>
+    <th>Action</th>
+</tr>
+
+{% for row in requests_data %}
+<tr>
+    <td>{{ row.id }}</td>
+    <td>{{ row.staff_id }}</td>
+    <td>{{ row.request_type }}</td>
+    <td>{{ row.details }}</td>
+    <td>{{ row.status }}</td>
+    <td>
+       {% if row.pdf_file %}
+            <a href="{{ url_for('static', filename=row.pdf_file.replace('static/', '')) }}" target="_blank">
+              View PDF
+           </a>
+        {% else %}
+           No PDF
+        {% endif %}
+    </td>
+    <td>
+        {% if row.status == 'Pending' %}
+        <a href="/approve_request/{{ row.id }}">Approve</a> |
+        <a href="/reject_request/{{ row.id }}">Reject</a>
+        {% else %}
+        Done
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; }
+        .card { width: 86mm; height: 54mm; border: 0.5mm solid #1b49aa; border-radius: 3mm; position: relative; background: #fff; box-sizing: border-box; overflow: hidden; }
+        .header { background: #1b49aa; color: white; text-align: center; height: 12.5mm; padding: 1mm 12mm; position: relative; box-sizing: border-box; }
+        .logo-left { position: absolute; top: 1.5mm; left: 2mm; width: 9.5mm; height: 9.5mm; border-radius: 50%; background: white; object-fit: contain; }
+        .logo-right { position: absolute; top: 1.5mm; right: 2mm; width: 9.5mm; height: 9.5mm; border: none; border-radius: 60%; background: white; object-fit: contain; }
+        .header h2 { margin: 0; font-size: 4.5pt; font-weight: bold; padding-top: 0.5mm; }
+        .header p { margin: 0.5px 0; font-size: 3.5pt; }
+        .header span { display: block; font-size: 3pt; color: #e0e0e0; margin-top: 0.5mm; }
+        .badge-box { position: absolute; top: 11.5mm; width: 100%; text-align: center; z-index: 10; }
+        .badge { background: #d11a2a; color: white; padding: 0.5mm 3mm; border-radius: 1.5mm; font-weight: bold; border: 0.5mm solid white; font-size: 4.5pt; }
+        .middle-table { width: 100%; border-collapse: collapse; margin-top: 3.5mm; }
+        .middle-table td { vertical-align: top; }
+        .photo-td { width: 22mm; padding-left: 2mm; padding-top: 1mm; }
+        .photo-td img { width: 19mm; height: 19mm; border: 0.5mm solid #000; object-fit: cover; }
+        .qr-td { width: 22mm; padding-right: 2mm; padding-top: 1mm; text-align: right; }
+        .qr-td img { width: 19mm; height: 19mm; object-fit: contain; }
+        .info-td { padding: 0 1mm; }
+        .info-table { width: 100%; font-size: 4.5pt; line-height: 1.35; table-layout: fixed; border-collapse: collapse; }
+        .info-table th { text-align: left; color: #1b49aa; width: 14.5mm; white-space: nowrap; }
+        .info-table td { color: #000; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .footer-table { position: absolute; bottom: 1.5mm; width: 100%; padding: 0 2mm; border-collapse: collapse; }
+        .footer-table td { vertical-align: bottom; }
+        .sign-img { height: 4.5mm; background: transparent; object-fit: contain; margin-bottom: 0.5mm; }
+        .sign-text { font-size: 4pt; color: #000; font-weight: bold; }
+        .valid-text { font-size: 3.5pt; color: #555; display: block; margin-top: 0.5mm; }
+    </style>
+</head>
+<body>
+    {% from "_id_card_macro.html" import render_id_card %}
+    {{ render_id_card(data) }}
+</body>
+</html>

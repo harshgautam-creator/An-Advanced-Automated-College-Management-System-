@@ -1,0 +1,54 @@
+{% macro render_id_card(data) %}
+<div class="card">
+    <div class="header">
+        <img src="{{ data['logo.left'] }}" class="logo-left">
+        <img src="{{ data['logo.right'] }}" class="logo-right">
+        <h2>SAHODRA RAI GOVERNMENT POLYTECHNIC COLLEGE SAGAR (M.P)</h2>
+        <p>(An ISO 9001:2015 Certified Institution)</p>
+        <p>Tel NO.: 07582-360229, Email: prisrgpc.sgr@mp.gov.in</p>
+        <p>Sahodra Rai Govt. Polytechnic College Sagar</p>
+        <span>Ref. No./SRGPC/STUDENT-ID/{{data.current_year}}/{{data.ref_no}} &nbsp; | &nbsp; Date: {{data.created_date}}</span>
+    </div>
+
+    <div class="badge-box"><span class="badge">IDENTITY CARD</span></div>
+
+    <table class="middle-table">
+        <tr>
+            <td class="photo-td">
+                <img src="{{ data.photo }}">
+            </td>
+            <td class="info-td">
+                <table class="info-table">
+                    <tr><th>Name</th><td>: {{ data.name }}</td></tr>
+                    <tr><th>Father's Name</th><td>: {{ data.father }}</td></tr>
+                    <tr><th>Mother's Name</th><td>: {{ data.mother }}</td></tr>
+                    <tr><th>Enrollment No</th><td>: {{ data.enrollment }}</td></tr>
+                    <tr><th>Branch</th><td>: {{ data.branch }}</td></tr>
+                    <tr><th>Contact No</th><td>: {{ data.contact }}</td></tr>
+                    <tr><th>Email ID</th><td>: {{ data.email }}</td></tr>
+                    <tr><th>Aadhar Card</th><td>: {{ data.adhar }}</td></tr>
+                    <tr><th>Address</th><td>: {{ data.address }}</td></tr>
+                </table>
+            </td>
+            <td class="qr-td">
+                <img src="{{ data.qr_code }}">
+            </td>
+        </tr>
+    </table>
+
+    <table class="footer-table">
+        <tr>
+            <td style="width: 40%; text-align: left;">
+                <img src="{{ data.student_sign }}" class="sign-img"><br>
+                <span class="sign-text">Student's Signature</span>
+                <span class="valid-text">Valid up to: {{ data.valid_upto }}</span>
+            </td>
+            <td style="width: 60%; text-align: right;">
+                <img src="{{ data.auth_sign }}" class="sign-img"><br>
+                <span class="sign-text">Dr. Y. P. Singh</span><br>
+                <span class="valid-text">Principal / Authorized Signatory</span>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endmacro %}
